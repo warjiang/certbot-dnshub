@@ -34,3 +34,6 @@ dnshub_provider=dnspod
 dnshub_api_id = 12345
 dnshub_api_token = 1234567890abcdef1234567890abcdef
 ```
+
+
+# FAQ

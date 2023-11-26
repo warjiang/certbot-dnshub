@@ -44,3 +44,13 @@ certbot-dnshub 是一个支持各种第三方 DNS 服务商的 Certbot DNS 插�
               --dnshub-credentials /path/to/credentials.ini \
               -d www.example.com 
    ```
+   
+
+# FAQ
+1. Unsafe permissions on credentials configuration file: /opt/certbot/credentials.ini
+   ![faq-credentials-permission.png](./assets/faq-credentials-permission.png)
+   credentials.ini文件的权限太大了，手动改为600即可
+   ```bash
+   chmod 600 /path/to/credentials.ini
+   ```
+2. 
