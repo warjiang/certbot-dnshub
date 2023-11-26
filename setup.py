@@ -12,10 +12,16 @@ install_requires = [
     'zope.interface',
 ]
 
+# Read the long description from the README
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name='certbot-dnshub',
     version=version,
     description="Multi dns provider authentication plugin for certbot",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     url='https://github.com/warjiang/certbot-dnshub',
     author="warjiang",
     author_email='1096409085@qq.com',
