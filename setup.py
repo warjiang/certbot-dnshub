@@ -42,7 +42,7 @@ setup(
         'Topic :: System :: Systems Administration',
         'Topic :: Utilities',
     ],
-    package=find_packages(),
+    packages=find_packages( exclude=["assets"] ),
     include_package_data=True,
     install_requires=install_requires,
     entry_points={
