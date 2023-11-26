@@ -1,52 +1,36 @@
 # Multi dns provider authentication plugin for certbot
 
-[![Build Status](https://travis-ci.org/tengattack/certbot-dns-dnspod.svg?branch=master)](https://travis-ci.org/tengattack/certbot-dns-dnspod)
-[![Coverage Status](https://coveralls.io/repos/github/tengattack/certbot-dns-dnspod/badge.svg?branch=master)](https://coveralls.io/github/tengattack/certbot-dns-dnspod?branch=master)
-[![PyPI](https://img.shields.io/pypi/v/certbot-dns-dnspod.svg)](https://pypi.python.org/pypi/certbot-dns-dnspod)
-[![PyPI](https://img.shields.io/pypi/pyversions/certbot-dns-dnspod.svg)](https://pypi.python.org/pypi/certbot-dns-dnspod)
-[![PyPI](https://img.shields.io/pypi/l/certbot-dns-dnspod.svg)](https://pypi.python.org/pypi/certbot-dns-dnspod)
+[![CI](https://github.com/warjiang/certbot-dnshub/workflows/CI/badge.svg?branch=main&event=push)](https://github.com/warjiang/certbot-dnshub/actions?query=event%3Apush+branch%3Amaster+workflow%3ACI+)
+[![PyPI](https://img.shields.io/pypi/v/certbot-dnshub.svg)](https://pypi.org/project/certbot-dnshub/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/certbot-dnshub.svg)](https://pypi.org/project/certbot-dnshub/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/certbot-dnshub.svg)](https://pypi.org/project/certbot-dnshub/)
+[![PyPI - License](https://img.shields.io/pypi/l/certbot-dnshub.svg)](https://pypi.org/project/certbot-dnshub/)
 
 
 > English | [中文](README_zh-CN.md)
 
-A certbot dns plugin to obtain certificates using dnspod.
+Multi dns provider authentication plugin for certbot. It can help you automatically apply and update Let's Encrypt wildcard certificates.
 
-## Obtain API Token
-[https://www.dnspod.cn/console/user/security](https://www.dnspod.cn/console/user/security)
 
-## Install
-
-Pip:
-
+## Usage
+you can use this plugin with docker or pip. We recommend using docker.
 ```bash
-sudo pip install git+https://github.com/tengattack/certbot-dns-dnspod.git
-```
-
-Snap:
-
-```bash
-sudo snap install certbot-dns-dnspod
-sudo snap set certbot trust-plugin-with-root=ok
-sudo snap connect certbot:plugin certbot-dns-dnspod
-```
-
-## Credentials File
-
-```ini
-dns_dnspod_api_id = 12345
-dns_dnspod_api_token = 1234567890abcdef1234567890abcdef
-```
-
-```bash
+docker pull certbot/certbot
+docker run -it --rm --name certbot \
+        -v "/etc/letsencrypt:/etc/letsencrypt" \
+        -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
+        -v "/path/to/credentials.ini:/path/to/credentials.ini" \
+        --entrypoint /bin/sh certbot/certbot
+pip install certbot-dnshub 
 chmod 600 /path/to/credentials.ini
+certbot certonly -a dnshub \
+  --dnshub-credentials /path/to/credentials.ini \
+  -d www.example.com 
 ```
 
-
-## Obtain Certificates
-
-```bash
-certbot certonly -a dns-dnspod \
-    --dns-dnspod-credentials /path/to/credentials.ini \
-    -d example.com \
-    -d "*.example.com"
+example of credentials file as below:
+```ini
+dnshub_provider=dnspod
+dnshub_api_id = 12345
+dnshub_api_token = 1234567890abcdef1234567890abcdef
 ```

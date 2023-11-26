@@ -1,6 +1,8 @@
 name: CI
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*.*.*'
 
@@ -23,6 +25,7 @@ jobs:
 
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+        if: github.ref != 'refs/heads/main'
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
