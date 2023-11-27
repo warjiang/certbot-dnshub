@@ -44,7 +44,13 @@ certbot-dnshub 是一个支持各种第三方 DNS 服务商的 Certbot DNS 插�
               --dnshub-credentials /path/to/credentials.ini \
               -d www.example.com 
    ```
-   
+## dns服务商支持情况
+
+| 服务商     | 服务商文档                                                               | 使用文档                       | 更新时间       |
+|---------|---------------------------------------------------------------------|----------------------------|------------|
+| dns pod | [dnspod 文档](https://www.dnspod.cn/docs/index.html)                  | [使用文档](./assets/dnspod.md) | 2023-11-26 |
+| 阿里云     | [aliyun dns 文档](https://help.aliyun.com/document_detail/29772.html) | [使用文档](./assets/aliyun.md) | 2023-11-27 |
+
 
 # FAQ
 1. Unsafe permissions on credentials configuration file: /opt/certbot/credentials.ini
