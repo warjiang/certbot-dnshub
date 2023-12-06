@@ -3,7 +3,7 @@
 > [English](README.md) | 中文
 
 
-[![CI](https://github.com/warjiang/certbot-dnshub/workflows/CI/badge.svg?branch=main&event=push)](https://github.com/warjiang/certbot-dnshub/actions?query=event%3Apush+branch%3Amain+workflow%3ACI+)
+[![CI](https://github.com/warjiang/certbot-dnshub/actions/workflows/pypi.yml/badge.svg)](https://github.com/warjiang/certbot-dnshub/actions/workflows/pypi.yml)
 [![PyPI](https://img.shields.io/pypi/v/certbot-dnshub.svg)](https://pypi.org/project/certbot-dnshub/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/certbot-dnshub.svg)](https://pypi.org/project/certbot-dnshub/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/certbot-dnshub.svg)](https://pypi.org/project/certbot-dnshub/)
