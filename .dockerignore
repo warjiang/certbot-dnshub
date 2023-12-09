@@ -1,0 +1,17 @@
+# Ignore common Python files and directories
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Ignore virtual environment files
+venv/
+.env
+
+# Ignore development and build files
+*.log
+*.pid
+*.lock
+*.egg-info/
+dist/
+build/
