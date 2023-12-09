@@ -1,4 +1,4 @@
-# certbot-dnshub
+# 支持多DNS服务商的certbot插件
 
 > [English](README.md) | 中文
 
@@ -18,20 +18,21 @@ certbot-dnshub 是一个支持各种第三方 DNS 服务商的 Certbot DNS 插�
 
 
 ## 使用方式
+你可以使用docker或者pip的方式使用该插件，我们推荐使用docker的方式。
 以[dnspod](./assets/dnspod.md)使用为例，首先需要拿到dnspod的openapi的配置信息，然后执行如下命令：
 
 1. 通过 docker 容器使用
     ```bash
     docker pull certbot/certbot
     docker run -it --rm --name certbot \
-        -v "/etc/letsencrypt:/etc/letsencrypt" \
-        -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
-        -v "/path/to/credentials.ini:/path/to/credentials.ini" \
+        -v /etc/letsencrypt:/etc/letsencrypt \
+        -v /var/lib/letsencrypt:/var/lib/letsencrypt \
+        -v `pwd`/credentials.ini:/opt/certbot/credentials.ini \
         --entrypoint /bin/sh certbot/certbot
     pip install certbot-dnshub 
-    chmod 600 /path/to/credentials.ini
+    chmod 600 /opt/certbot/credentials.ini
     certbot certonly -a dnshub \
-            --dnshub-credentials /path/to/credentials.ini \
+            --dnshub-credentials /opt/certbot/credentials.ini \
             -d www.example.com 
     ```
 2. 通过 pip 安装使用
@@ -52,7 +53,7 @@ certbot-dnshub 是一个支持各种第三方 DNS 服务商的 Certbot DNS 插�
 | 阿里云     | [aliyun dns 文档](https://help.aliyun.com/document_detail/29772.html) | [使用文档](./assets/aliyun.md) | 2023-11-27 |
 
 
-# FAQ
+# 常见问题
 1. Unsafe permissions on credentials configuration file: /opt/certbot/credentials.ini
    ![faq-credentials-permission.png](./assets/faq-credentials-permission.png)
    credentials.ini文件的权限太大了，手动改为600即可
